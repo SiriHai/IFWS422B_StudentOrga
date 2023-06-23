@@ -12,13 +12,9 @@ import model.Student;
 public class StudentCtr {
 
     public static void main(String[] args) throws Exception {
-        Student student1 = new Student();
-        student1.setName("Nathan Evans");
-        student1.setId(1001);
+        Student student1 = new Student("Nathan Evans", 1001);
 
-        Student student2 = new Student();
-        student2.setName("Miksu Macloud");
-        student2.setId(1002);
+        Student student2 = new Student("Miksu Macloud",1002);
 
         System.out.println(student1.getName() + "\t" + student1.getId());
         System.out.println(student2.info());
@@ -28,7 +24,7 @@ public class StudentCtr {
         
         Student student3 = new Student();
         System.out.print("Name: \t");
-        String name3 = sc.next();
+        String name3 = sc.nextLine();
         student3.setName(name3);
        
         System.out.print("ID: \t");
