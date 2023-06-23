@@ -6,16 +6,19 @@ package model;
  * @author Iris Hanheide
  */
 public class Student {
+    private static int anzahl = 0;
+
     private String name;
     private int id;
 
     // Standardkonstruktor
     public Student() {
-
+        anzahl++;
     }
 
     // Konstruktor
     public Student(String name) {
+        this();
         this.name = name;
     }
 
@@ -23,6 +26,14 @@ public class Student {
     public Student(String name, int id) {
         this(name); // anderen Konstruktor aufrufen
         this.id = id;
+    }
+
+    public static int getAnzahl() {
+        return anzahl;
+    }
+
+    public static void setAnzahl(int anzahl) {
+        Student.anzahl = anzahl;
     }
 
     public int getId() {
@@ -54,11 +65,11 @@ public class Student {
         // den Zugriff auf Attribute die "Punktnotation" verwendet werden,
         // obwohl die Attribute den Modifizierer "private" haben.
         Student student1 = new Student();
-        student1.name="Nathan Evans";
-        student1.id=1001;
+        student1.name = "Nathan Evans";
+        student1.id = 1001;
 
         Student student2 = new Student();
-        student2.name ="Miksu Macloud";
+        student2.name = "Miksu Macloud";
         student2.id = 1002;
 
         System.out.println("Name: " + student1.name + " Id: " + student1.id);
