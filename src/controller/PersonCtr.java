@@ -14,6 +14,9 @@ public class PersonCtr {
         person2.newInputDialogue();
         System.out.println(person2.info());
 
+        Person.newInputDialogue(person2);
+        System.out.println(person2.info());
+
     }
 
 }

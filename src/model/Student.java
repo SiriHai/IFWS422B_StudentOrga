@@ -44,6 +44,7 @@ public class Student {
     public Student(String name, int id) {
         this.name = name;
         this.id = id;
+        anzahl++;
     }
 
     public static int getAnzahl() {

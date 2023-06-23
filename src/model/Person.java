@@ -5,7 +5,7 @@ public class Person {
     private String firstName, lastName;
     private int birth;
 
-    private Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public Person() {
     }
@@ -52,6 +52,16 @@ public class Person {
         lastName = sc.nextLine();
         System.out.print("birth: ");
         birth = sc.nextInt();
+        sc.nextLine();
+    }
+
+    public static void newInputDialogue(Person person) {
+        System.out.print("firstName: ");
+        person.firstName = sc.nextLine();
+         System.out.print("lastName: ");
+        person.lastName = sc.nextLine();
+        System.out.print("birth: ");
+        person.birth = sc.nextInt();
         sc.nextLine();
     }
 
