@@ -48,7 +48,7 @@ public class Person {
     public void newInputDialogue() {
         System.out.print("firstName: ");
         firstName = sc.nextLine();
-         System.out.print("lastName: ");
+        System.out.print("lastName: ");
         lastName = sc.nextLine();
         System.out.print("birth: ");
         birth = sc.nextInt();
@@ -58,7 +58,7 @@ public class Person {
     public static void newInputDialogue(Person person) {
         System.out.print("firstName: ");
         person.firstName = sc.nextLine();
-         System.out.print("lastName: ");
+        System.out.print("lastName: ");
         person.lastName = sc.nextLine();
         System.out.print("birth: ");
         person.birth = sc.nextInt();
