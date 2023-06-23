@@ -41,6 +41,13 @@ public class StudentCtr {
         System.out.println(student4.getName() + "\t\t" + student4.getId());
 
         System.out.println("Es wurden " + Student.getAnzahl() + " Studenten angelegt.");
+
+        Student.setNextId(9999);
+        Student student5 = new Student("Ed Sheeran");
+        System.out.println(student5.info());
+
+        Student student6 = new Student("Katy Perry");
+        System.out.println(student6.info());
     }
 
 }

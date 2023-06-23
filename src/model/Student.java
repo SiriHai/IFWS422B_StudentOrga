@@ -6,14 +6,32 @@ package model;
  * @author Iris Hanheide
  */
 public class Student {
+    private static final int FIRST_ID = 1001;
+    private static final int LAST_ID = 9999;
+
     private static int anzahl = 0;
+    private static int nextId = FIRST_ID;
 
     private String name;
     private int id;
 
+    public static void setNextId(int nextId) {
+        Student.nextId = nextId;
+    }
+
+    private static int getNextId() {
+        if (nextId <= LAST_ID)
+            return nextId++;
+        else {
+            System.out.println("Overflow");
+            return 0;
+        }
+    }
+
     // Standardkonstruktor
     public Student() {
         anzahl++;
+        id = getNextId();
     }
 
     // Konstruktor
@@ -22,9 +40,9 @@ public class Student {
         this.name = name;
     }
 
-    // Konstruktor überladen
+    // Achtung keine automatische Nummerngenerierung
     public Student(String name, int id) {
-        this(name); // anderen Konstruktor aufrufen
+        this.name = name;
         this.id = id;
     }
 
