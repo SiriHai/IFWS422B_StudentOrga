@@ -13,6 +13,7 @@ public class Student extends Person {
     private static int nextId = FIRST_ID;
 
     private int id;
+    private String subject;
 
     public static void setNextId(int nextId) {
         Student.nextId = nextId;
@@ -44,6 +45,16 @@ public class Student extends Person {
         super.setBirth(birth);
     }
 
+    public Student(String firstName, String lastName, int birth, String city){
+        this(firstName, lastName, birth);
+        super.setCity(city);
+    }
+
+    public Student(String firstName, String lastName, int birth, String city, String subject){
+        this(firstName, lastName, birth, city);
+        this.subject = subject;
+    }
+
     // Achtung keine automatische Nummerngenerierung
     public Student(String firstName, String lastName, int birth, int id) {
         this(firstName, lastName, birth);
@@ -65,6 +76,28 @@ public class Student extends Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public void newInputDialogue() {
+        super.newInputDialogue();
+        
+        System.out.print("subject: ");
+        subject = sc.nextLine();
+    }
+
+    public static void newInputDialogue(Student student) {
+        Person.newInputDialogue(student);
+        
+        System.out.print("subject: ");
+        student.subject = sc.nextLine();
     }
 
     public String info() {

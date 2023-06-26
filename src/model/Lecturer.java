@@ -13,4 +13,8 @@ public class Lecturer extends Person {
         super(firstName, lastName, birth);
     }
 
+    public Lecturer(String firstName, String lastName, int birth, String city) {
+        super(firstName, lastName, birth, city);
+    }
+
 }

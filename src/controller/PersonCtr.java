@@ -5,7 +5,7 @@ import model.Person;
 public class PersonCtr {
     public static void main(String[] args) {
 
-        Person person1 = new Person("Pippi", "Langstrumpf", 1950);
+        Person person1 = new Person("Pippi", "Langstrumpf", 1950, "Bielefeld");
         System.out.println(person1.info());
         person1.newInputDialogue();
         System.out.println(person1.info());

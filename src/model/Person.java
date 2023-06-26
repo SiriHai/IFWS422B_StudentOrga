@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class Person {
     private String firstName, lastName;
     private int birth;
+    private String city;
 
-    private static Scanner sc = new Scanner(System.in);
+    protected static Scanner sc = new Scanner(System.in);
 
     public Person() {
     }
@@ -16,9 +17,13 @@ public class Person {
     }
 
     public Person(String firstName, String lastName, int birth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this(firstName, lastName);
         this.birth = birth;
+    }
+
+    public Person(String firstName, String lastName, int birth, String city) {
+        this(firstName, lastName, birth);
+        this.city = city;
     }
 
     public String getFirstName() {
@@ -54,6 +59,14 @@ public class Person {
         this.birth = birth;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public void newInputDialogue() {
         System.out.print("firstName: ");
         firstName = sc.nextLine();
@@ -62,6 +75,8 @@ public class Person {
         System.out.print("birth: ");
         birth = sc.nextInt();
         sc.nextLine();
+        System.out.print("city: ");
+        city = sc.nextLine();
     }
 
     public static void newInputDialogue(Person person) {
@@ -72,10 +87,12 @@ public class Person {
         System.out.print("birth: ");
         person.birth = sc.nextInt();
         sc.nextLine();
+        System.out.print("city: ");
+        person.city = sc.nextLine();
     }
 
     public String info(){
-        return "firstName " + firstName + ", lastName " + lastName + ", birth " + birth;
+        return "firstName " + firstName + ", lastName " + lastName + ", birth " + birth + ", city " + city;
     }
 
 }

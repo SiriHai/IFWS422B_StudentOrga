@@ -33,6 +33,10 @@ public class StudentCtr {
         Person.newInputDialogue(student4);
         System.out.println(student4.info());
 
+        Person student5 = new Student("Luciano", "Schmidt", 1999);
+        System.out.println(((Student) student5).getId());
+        System.out.println(student5.info());
+
         System.out.println("Es wurden " + Student.getAnzahl() + " Studenten angelegt.");
     }
 
