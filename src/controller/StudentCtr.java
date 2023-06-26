@@ -1,5 +1,6 @@
 package controller;
 
+import model.Person;
 //import java.util.Scanner;
 import model.Student;
 
@@ -12,42 +13,27 @@ import model.Student;
 public class StudentCtr {
 
     public static void main(String[] args) throws Exception {
-        Student student1 = new Student("Nathan Evans", 1001);
+        Student student1 = new Student("Nathan", "Evans", 1987, 1001);
 
-        Student student2 = new Student("Miksu Macloud",1002);
+        Student student2 = new Student("Miksu", "Macloud", 1987, 1002);
 
         System.out.println(student1.getName() + "\t" + student1.getId());
         System.out.println(student2.info());
 
-        // // Einlesen von der Konsole
-        // Scanner sc = new Scanner(System.in);
-        
-        // Student student3 = new Student();
-        // System.out.print("Name: \t");
-        // String name3 = sc.nextLine();
-        // student3.setName(name3);
-       
-        // System.out.print("ID: \t");
-        // int id3 = sc.nextInt();
-        // student3.setId(id3);
-    
-        // sc.close();
-        
-        // System.out.println();
-        // System.out.println(student3.getName() + "\t" + student3.getId());
-        
-        // Konstruktor
-        Student student4 = new Student("Friday", 1003);
-        System.out.println(student4.getName() + "\t\t" + student4.getId());
+        // Neu: Aufruf von newInputDialogue aus Person
+        // 1. Instanmethode
+        Student student3 = new Student();
+        student3.newInputDialogue();
+        System.out.println(student3.info());
+
+        // 2. statische Methode
+        Student student4 = new Student();
+        // Student.newInputDialogue(student4);
+        // wurde Klasse Person importiert ist auch folgendes möglich
+        Person.newInputDialogue(student4);
+        System.out.println(student4.info());
 
         System.out.println("Es wurden " + Student.getAnzahl() + " Studenten angelegt.");
-
-        Student.setNextId(9999);
-        Student student5 = new Student("Ed Sheeran");
-        System.out.println(student5.info());
-
-        Student student6 = new Student("Katy Perry");
-        System.out.println(student6.info());
     }
 
 }
