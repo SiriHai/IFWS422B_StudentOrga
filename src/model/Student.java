@@ -86,6 +86,7 @@ public class Student extends Person {
         this.subject = subject;
     }
 
+    @Override
     public void newInputDialogue() {
         super.newInputDialogue();
         
@@ -93,6 +94,7 @@ public class Student extends Person {
         subject = sc.nextLine();
     }
 
+    // Überladen
     public static void newInputDialogue(Student student) {
         Person.newInputDialogue(student);
         
@@ -100,8 +102,31 @@ public class Student extends Person {
         student.subject = sc.nextLine();
     }
 
-    public String info() {
-        return super.info() + " Id: " + id;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        
+        Student other = (Student) obj;
+        if (id != other.id)
+            return false;
+        if (subject == null) {
+            if (other.subject != null)
+                return false;
+        } else if (!subject.equals(other.subject))
+            return false;
+        return true;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return super.toString() + " Student [id=" + id + ", subject=" + subject + "]";
     }
 
     public static void main(String[] args) throws Exception {
@@ -117,6 +142,6 @@ public class Student extends Person {
         student2.id = 1002;
 
         System.out.println("Name: " + student1.getName() + " Id: " + student1.id);
-        System.out.println(student2.info());
+        System.out.println(student2);
     }
 }

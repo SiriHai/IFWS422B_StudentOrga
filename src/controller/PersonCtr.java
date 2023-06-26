@@ -4,18 +4,18 @@ import model.Person;
 
 public class PersonCtr {
     public static void main(String[] args) {
+        Person person1 = new Person("Pippi", "Langstrumpf", 1950);
+        Person person2 = new Person("Pippi", "Langstrumpf", 1950);
+        Person person3 = person1;
 
-        Person person1 = new Person("Pippi", "Langstrumpf", 1950, "Bielefeld");
-        System.out.println(person1.info());
-        person1.newInputDialogue();
-        System.out.println(person1.info());
+        System.out.println(person1 == person2); // false
+        System.out.println(person1 == person3); // true
+        System.out.println(person1.equals(person2)); // true
+        System.out.println(person1.equals(person3)); // true
 
-        Person person2 = new Person();
-        person2.newInputDialogue();
-        System.out.println(person2.info());
+        System.out.println(person1);
+        System.out.println(person1.toString());
 
-        Person.newInputDialogue(person2);
-        System.out.println(person2.info());
 
     }
 

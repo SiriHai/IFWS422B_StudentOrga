@@ -17,4 +17,11 @@ public class Lecturer extends Person {
         super(firstName, lastName, birth, city);
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " Lecturer [] ";
+    }
+
+    
+
 }
