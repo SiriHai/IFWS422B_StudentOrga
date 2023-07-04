@@ -22,14 +22,14 @@ public class Account {
     // private static final String COUNTRY = "1314";
     private static final String CODE_NUMBER = "30050110";
 
-    private static int calcCheckDigit(long accountNo){
-        int checkDigit = (int)(accountNo % 13);
-        return 13-checkDigit;
+    private static int calcCheckDigit(long accountNo) {
+        int checkDigit = (int) (accountNo % 13);
+        return 13 - checkDigit;
     }
 
-    protected void makeIban(){
+    protected void makeIban() {
         int pruef = calcCheckDigit(accountNo);
-        this.iban = String.format("%s%02d%s%010d",COUNTRY_CODE, pruef, CODE_NUMBER,accountNo);
+        this.iban = String.format("%s%02d%s%010d", COUNTRY_CODE, pruef, CODE_NUMBER, accountNo);
     }
 
     // Konstruktoren
@@ -109,6 +109,21 @@ public class Account {
     @Override
     public String toString() {
         return "Account [accountNo=" + accountNo + ", iBan=" + iban + ", owner=" + owner + ", saldo=" + saldo + "]";
+    }
+
+    public static boolean checkIban(String iban) {
+        String country = iban.substring(0,2);
+        if (!country.equals(COUNTRY_CODE))
+            return false;
+
+        String codeNumber = iban.substring(4, 12);
+        if (!codeNumber.equals(CODE_NUMBER))
+            return false;
+        
+        int pruef = Integer.parseInt(iban.substring(2, 4));
+        long accountNo = Long.parseLong(iban.substring(12, 22));
+        
+        return calcCheckDigit(accountNo) == pruef;
     }
 
     // Buchungen
