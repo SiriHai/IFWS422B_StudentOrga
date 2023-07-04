@@ -87,8 +87,8 @@ public class Student extends Person {
     }
 
     @Override
-    public void newInputDialogue() {
-        super.newInputDialogue();
+    protected void newInput() {
+        System.out.println("New student ");
         
         System.out.print("subject: ");
         subject = sc.nextLine();

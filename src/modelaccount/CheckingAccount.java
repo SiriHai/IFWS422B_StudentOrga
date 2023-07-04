@@ -16,7 +16,7 @@ public class CheckingAccount extends Account {
     private static long nextNo = FIRST_NO;
 
     // Kontonummer erzeugen
-    private void makeNewAccountNo() {
+    protected void makeNewAccountNo() {
         if (nextNo <= LAST_NO) {
             super.setAccountNo(nextNo++);
         } else {
@@ -32,12 +32,10 @@ public class CheckingAccount extends Account {
 
     public CheckingAccount(String owner) {
         super(owner);
-        makeNewAccountNo();
     }
 
     public CheckingAccount(String owner, double saldo) {
         super(owner, saldo);
-        makeNewAccountNo();
     }
 
     public CheckingAccount(String owner, double saldo, double overdraftAmount) {

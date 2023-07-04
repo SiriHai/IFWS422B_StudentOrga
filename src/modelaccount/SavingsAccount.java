@@ -11,7 +11,7 @@ public class SavingsAccount extends Account {
     private static long nextNo = FIRST_NO;
 
     // Kontonummer erzeugen
-    private void makeNewAccountNo() {
+    protected void makeNewAccountNo() {
         if (nextNo <= LAST_NO) {
             super.setAccountNo(nextNo++);
         } else {
@@ -27,12 +27,10 @@ public class SavingsAccount extends Account {
 
     public SavingsAccount(String owner) {
         super(owner);
-        makeNewAccountNo();
     }
 
     public SavingsAccount(String owner, double saldo) {
         super(owner, saldo);
-        makeNewAccountNo();
     }
 
     public SavingsAccount(String owner, double saldo, float interest) {

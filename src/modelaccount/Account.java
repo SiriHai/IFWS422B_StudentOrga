@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Iris Hanheide
  */
 
-public class Account {
+public abstract class Account {
     private long accountNo;
 
     private String iban;
@@ -23,6 +23,8 @@ public class Account {
     private static final String COUNTRY = "1314";
     private static final String CODE_NUMBER = "30050110";
 
+    protected abstract void makeNewAccountNo();
+    
     private static int calcCheckDigit(long accountNo) {
         String check = String.format("%s%010d%s00", CODE_NUMBER, accountNo, COUNTRY);
         BigInteger checkDigit = new BigInteger(check);
@@ -39,9 +41,11 @@ public class Account {
     // Jedes Konto soll mindestens einen Owner und eine Kontonummer haben,
     // deshalb verzichte ich auf den Standardkonstruktor von außen
     protected Account() {
+        makeNewAccountNo();
     }
 
     public Account(String owner) {
+        this();
         this.owner = owner;
     }
 
