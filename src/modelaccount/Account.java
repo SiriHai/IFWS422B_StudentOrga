@@ -1,5 +1,6 @@
 package modelaccount;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -19,12 +20,14 @@ public class Account {
     protected Scanner sc = new Scanner(System.in);
 
     private static final String COUNTRY_CODE = "DE";
-    // private static final String COUNTRY = "1314";
+    private static final String COUNTRY = "1314";
     private static final String CODE_NUMBER = "30050110";
 
     private static int calcCheckDigit(long accountNo) {
-        int checkDigit = (int) (accountNo % 13);
-        return 13 - checkDigit;
+        String check = String.format("%s%010d%s00", CODE_NUMBER, accountNo, COUNTRY);
+        BigInteger checkDigit = new BigInteger(check);
+        checkDigit = checkDigit.mod(new BigInteger("97"));
+        return 98 - Integer.parseInt(checkDigit.toString());
     }
 
     protected void makeIban() {
@@ -115,15 +118,14 @@ public class Account {
         String country = iban.substring(0,2);
         if (!country.equals(COUNTRY_CODE))
             return false;
-
+        
+        String pruef = iban.substring(2, 4);
         String codeNumber = iban.substring(4, 12);
-        if (!codeNumber.equals(CODE_NUMBER))
-            return false;
+        String accountNo = iban.substring(12, 22);
+
+        BigInteger checkDigit = new BigInteger(codeNumber + accountNo + COUNTRY + pruef);
         
-        int pruef = Integer.parseInt(iban.substring(2, 4));
-        long accountNo = Long.parseLong(iban.substring(12, 22));
-        
-        return calcCheckDigit(accountNo) == pruef;
+        return checkDigit.mod(new BigInteger("97")).intValue() == 1;
     }
 
     // Buchungen
