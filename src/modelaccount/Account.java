@@ -18,6 +18,20 @@ public class Account {
 
     protected Scanner sc = new Scanner(System.in);
 
+    private static final String COUNTRY_CODE = "DE";
+    // private static final String COUNTRY = "1314";
+    private static final String CODE_NUMBER = "30050110";
+
+    private static int calcCheckDigit(long accountNo){
+        int checkDigit = (int)(accountNo % 13);
+        return 13-checkDigit;
+    }
+
+    protected void makeIban(){
+        int pruef = calcCheckDigit(accountNo);
+        this.iban = String.format("%s%02d%s%010d",COUNTRY_CODE, pruef, CODE_NUMBER,accountNo);
+    }
+
     // Konstruktoren
     // Jedes Konto soll mindestens einen Owner und eine Kontonummer haben,
     // deshalb verzichte ich auf den Standardkonstruktor von außen
@@ -64,6 +78,7 @@ public class Account {
 
     public void setAccountNo(long accountNo) {
         this.accountNo = accountNo;
+        makeIban();
     }
 
     @Override
@@ -87,8 +102,7 @@ public class Account {
                 return false;
         } else if (!owner.equals(other.owner))
             return false;
-        if (Double.doubleToLongBits(saldo) != Double.doubleToLongBits(other.saldo))
-            return false;
+
         return true;
     }
 
@@ -98,7 +112,7 @@ public class Account {
     }
 
     // Buchungen
-    public void book(double amount) {
+    private void book(double amount) {
         saldo += amount;
     }
 

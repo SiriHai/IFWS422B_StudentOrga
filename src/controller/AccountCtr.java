@@ -19,7 +19,8 @@ public class AccountCtr {
         System.out.println(sb1);
         //System.out.println("Check Iban: " + Account.checkIban(sb1.getIban()) + "\n");
 
-        SavingsAccount.setNextNo(1122334400L);
+        //SavingsAccount.setNextNo(1122334400L);
+        SavingsAccount.setNextNo(3_000_000_000L);
 
         SavingsAccount sb2 = new SavingsAccount("Ice Cream");
         System.out.println(sb2);

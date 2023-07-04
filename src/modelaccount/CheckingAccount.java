@@ -23,6 +23,7 @@ public class CheckingAccount extends Account {
             System.out.println("Sparbuch Nummernbereich überschritten");
             super.setAccountNo(MISTAKE_NO);
         }
+        super.makeIban();
     }
 
     // Konstruktoren
