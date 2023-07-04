@@ -44,8 +44,20 @@ public class Staff extends Person {
         return super.toString() + " Staff [function=" + function + "]";
     }
 
-    
-
-    
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Staff other = (Staff) obj;
+        if (function == null) {
+            if (other.function != null)
+                return false;
+        } else if (!function.equals(other.function))
+            return false;
+        return true;
+    }
 }
