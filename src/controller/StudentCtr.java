@@ -1,5 +1,6 @@
 package controller;
 
+import model.Location;
 import model.Person;
 //import java.util.Scanner;
 import model.Student;
@@ -13,9 +14,12 @@ import model.Student;
 public class StudentCtr {
 
     public static void main(String[] args) throws Exception {
-        Student student1 = new Student("Nathan", "Evans", 1987, "Bielefeld", "WI");
+        Location loc1 = new Location("Fürstenallee", 5, 33102, "Paderborn");
+        Location loc2 = new Location("Meisenstraße", 92, 33607, "Bielefeld");
 
-        Student student2 = new Student("Nathan", "Evans", 1987, "Bielefeld", "AI");
+        Student student1 = new Student("Nathan", "Evans", 1987, loc1, "WI");
+
+        Student student2 = new Student("Nathan", "Evans", 1987, loc2, "AI");
 
         System.out.println(student1.equals(student2));
 

@@ -1,5 +1,7 @@
 package modelaccount;
 
+import model.Person;
+
 public class SavingsAccount extends Account {
     private double transactionLimit; // Verfügungsrahmen
     private float interest; // Zinsen
@@ -34,15 +36,15 @@ public class SavingsAccount extends Account {
     // Jedes Konto soll mindestens einen Owner und eine Kontonummer haben,
     // deshalb verzichte ich auf den Standardkonstruktor
 
-    public SavingsAccount(String owner) {
+    public SavingsAccount(Person owner) {
         super(owner);
     }
 
-    public SavingsAccount(String owner, double saldo) {
+    public SavingsAccount(Person owner, double saldo) {
         super(owner, saldo);
     }
 
-    public SavingsAccount(String owner, double saldo, float interest) {
+    public SavingsAccount(Person owner, double saldo, float interest) {
         this(owner, saldo);
         this.interest = interest;
     }

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Student;
 import modelaccount.*;
 
 /**
@@ -11,10 +12,10 @@ import modelaccount.*;
 public class AccountCtr {
     public static void main(String[] args) throws Exception {
         System.out.println("\nHello, Account!\n");
-
+        Student student1 = new Student("Nathan", "Evans", 1987);
         // Press CTRL + ALT
         // Konstruktor: owner, Saldo, interest
-        SavingsAccount sb1 = new SavingsAccount("Iris Hanheide", 10000, 1000);
+        SavingsAccount sb1 = new SavingsAccount(student1, 10000, 1000);
         sb1.setTransactionLimit(1000);
         System.out.println(sb1);
         System.out.println("Check Iban: " + Account.checkIban(sb1.getIban()) + "\n");
@@ -22,11 +23,11 @@ public class AccountCtr {
         SavingsAccount.setNextNo(1122334400L);
         //SavingsAccount.setNextNo(3_000_000_000L);
 
-        SavingsAccount sb2 = new SavingsAccount("Ice Cream");
+        SavingsAccount sb2 = new SavingsAccount(student1);
         System.out.println(sb2);
         System.out.println("Check Iban: " + Account.checkIban(sb2.getIban()) + "\n");
 
-        SavingsAccount sb3 = new SavingsAccount("Ice Cream");
+        SavingsAccount sb3 = new SavingsAccount(student1);
         System.out.println("Vergleich sb3 und sb2: " + sb3.equals(sb2));
 
         sb3.setAccountNo(1122334400L);
@@ -34,11 +35,11 @@ public class AccountCtr {
         System.out.println("Check Iban : " + sb3.getIban() + ": " + Account.checkIban(sb3.getIban()) + "\n");
 
         // Konstruktor: owner, saldo, overdraftAmount
-        CheckingAccount g1 = new CheckingAccount("Iris Hanheide", 1000, 2000);
+        CheckingAccount g1 = new CheckingAccount(student1, 1000, 2000);
         System.out.println(g1.toString());
         System.out.println("Check Iban: " + Account.checkIban(g1.getIban()) + "\n");
 
-        CheckingAccount g2 = new CheckingAccount("Udo Lindenberg", 10000, 20000);
+        CheckingAccount g2 = new CheckingAccount(student1, 10000, 20000);
         System.out.println(g2.toString());
         System.out.println("Check Iban: " + Account.checkIban(g2.getIban()) + "\n");
 

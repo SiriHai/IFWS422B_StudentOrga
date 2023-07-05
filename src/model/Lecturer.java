@@ -15,8 +15,8 @@ public class Lecturer extends Person implements Employee {
         super(firstName, lastName, birth);
     }
 
-    public Lecturer(String firstName, String lastName, int birth, String city) {
-        super(firstName, lastName, birth, city);
+    public Lecturer(String firstName, String lastName, int birth, Location residence) {
+        super(firstName, lastName, birth, residence);
     }
 
     @Override

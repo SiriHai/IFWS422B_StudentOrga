@@ -45,13 +45,13 @@ public class Student extends Person {
         super.setBirth(birth);
     }
 
-    public Student(String firstName, String lastName, int birth, String city){
+    public Student(String firstName, String lastName, int birth, Location residence){
         this(firstName, lastName, birth);
-        super.setCity(city);
+        super.setResidence(residence);
     }
 
-    public Student(String firstName, String lastName, int birth, String city, String subject){
-        this(firstName, lastName, birth, city);
+    public Student(String firstName, String lastName, int birth, Location residence, String subject){
+        this(firstName, lastName, birth, residence);
         this.subject = subject;
     }
 

@@ -3,6 +3,8 @@ package modelaccount;
 import java.math.BigInteger;
 import java.util.Scanner;
 
+import model.Person;
+
 /**
  * Ü5: Aufgabe 1.1
  * Account: Elternklasse
@@ -14,7 +16,7 @@ public abstract class Account implements Numberable {
     private long accountNo;
 
     private String iban;
-    private String owner;
+    private Person owner;
     private double saldo;
 
     protected Scanner sc = new Scanner(System.in);
@@ -55,12 +57,12 @@ public abstract class Account implements Numberable {
         makeNewAccountNo();
     }
 
-    public Account(String owner) {
+    public Account(Person owner) {
         this();
         this.owner = owner;
     }
 
-    public Account(String owner, double saldo) {
+    public Account(Person owner, double saldo) {
         this(owner);
         this.saldo = saldo;
     }
@@ -74,11 +76,11 @@ public abstract class Account implements Numberable {
         this.iban = iban;
     }
 
-    public String getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 
@@ -126,7 +128,7 @@ public abstract class Account implements Numberable {
 
     @Override
     public String toString() {
-        return "Account [accountNo=" + accountNo + ", iBan=" + iban + ", owner=" + owner + ", saldo=" + saldo + "]";
+        return "Account [accountNo=" + accountNo + ", iBan=" + iban + ", owner=" + owner.getName() + ", saldo=" + saldo + "]";
     }
 
     public static boolean checkIban(String iban) {

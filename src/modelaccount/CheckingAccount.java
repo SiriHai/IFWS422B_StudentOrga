@@ -1,5 +1,7 @@
 package modelaccount;
 
+import model.Person;
+
 /**
  * Girokonto: abgeleitet von Konto
  * 
@@ -39,15 +41,15 @@ public class CheckingAccount extends Account {
     // Jedes Konto soll mindestens einen Owner und eine Kontonummer haben,
     // deshalb verzichte ich auf den Standardkonstruktor
 
-    public CheckingAccount(String owner) {
+    public CheckingAccount(Person owner) {
         super(owner);
     }
 
-    public CheckingAccount(String owner, double saldo) {
+    public CheckingAccount(Person owner, double saldo) {
         super(owner, saldo);
     }
 
-    public CheckingAccount(String owner, double saldo, double overdraftAmount) {
+    public CheckingAccount(Person owner, double saldo, double overdraftAmount) {
         this(owner, saldo);
         this.overdraftAmount = overdraftAmount;
     }

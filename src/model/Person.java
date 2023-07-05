@@ -1,10 +1,13 @@
 package model;
 import java.util.Scanner;
 
+import modelaccount.Account;
+
 public abstract class Person {
     private String firstName, lastName;
     private int birth;
-    private String city;
+    private Location residence;
+    Account account;
 
     protected static Scanner sc = new Scanner(System.in);
 
@@ -21,9 +24,9 @@ public abstract class Person {
         this.birth = birth;
     }
 
-    public Person(String firstName, String lastName, int birth, String city) {
+    public Person(String firstName, String lastName, int birth, Location residence) {
         this(firstName, lastName, birth);
-        this.city = city;
+        this.residence = residence;
     }
 
     protected abstract void newInput();
@@ -62,11 +65,23 @@ public abstract class Person {
     }
 
     public String getCity() {
-        return city;
+        return residence.getCity();
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public Location getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Location residence) {
+        this.residence = residence;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void newInputDialogue() {
@@ -79,8 +94,9 @@ public abstract class Person {
         System.out.print("birth: ");
         birth = sc.nextInt();
         sc.nextLine();
-        System.out.print("city: ");
-        city = sc.nextLine();
+        if (residence == null)
+            residence = new Location();
+        residence.newInputDialogue();
     }
 
     public static void newInputDialogue(Person person) {
@@ -91,8 +107,12 @@ public abstract class Person {
         System.out.print("birth: ");
         person.birth = sc.nextInt();
         sc.nextLine();
-        System.out.print("city: ");
-        person.city = sc.nextLine();
+        
+        if (person.residence == null){
+            person.residence = new Location();
+        }
+
+        Location.newInputDialogue(person.residence);
     }
 
     @Override
@@ -121,10 +141,10 @@ public abstract class Person {
         if (birth != other.birth)
             return false;
         
-            if (city == null) {
-            if (other.city != null)
+            if (residence == null) {
+            if (other.residence != null)
                 return false;
-        } else if (!city.equals(other.city))
+        } else if (!residence.equals(other.residence))
             return false;
         
         return true;
@@ -134,7 +154,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birth=" + birth + ", city=" + city
+        return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birth=" + birth + ", residence=" + residence
                 + "]";
     }
 }
