@@ -11,22 +11,22 @@ public class SavingsAccount extends Account {
     private static long nextNo = FIRST_NO;
 
     @Override
-    protected long fetchNextNo(){
+    public long fetchNextNo(){
         return nextNo;
     }
     
     @Override
-    protected long fetchLAST_NO(){
+    public long fetchLAST_NO(){
         return LAST_NO;
     }
     
     @Override
-    protected void incNextNo(){
+    public void incNextNo(){
         nextNo++;
     }
 
     @Override
-    protected long fetchMISTAKE_NO(){
+    public long fetchMISTAKE_NO(){
         return MISTAKE_NO;
     }
 

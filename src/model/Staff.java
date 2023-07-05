@@ -1,8 +1,9 @@
 package model;
 
-public class Staff extends Person {
+public class Staff extends Person implements Employee {
 
     private String function;
+    private int persNo;
 
     public Staff(){
 
@@ -17,6 +18,7 @@ public class Staff extends Person {
         this.function = function;
     }
 
+    @Override
     public String getFunction() {
         return function;
     }
@@ -59,5 +61,15 @@ public class Staff extends Person {
         } else if (!function.equals(other.function))
             return false;
         return true;
+    }
+
+    @Override
+    public void setPersNo(int persNo) {
+        this.persNo = persNo;
+    }
+
+    @Override
+    public int getPersNo() {
+        return persNo;
     }
 }

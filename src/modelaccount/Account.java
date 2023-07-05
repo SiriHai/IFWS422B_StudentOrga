@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Iris Hanheide
  */
 
-public abstract class Account {
+public abstract class Account implements Numberable {
     private long accountNo;
 
     private String iban;
@@ -22,11 +22,6 @@ public abstract class Account {
     private static final String COUNTRY_CODE = "DE";
     private static final String COUNTRY = "1314";
     private static final String CODE_NUMBER = "30050110";
-
-    protected abstract long fetchNextNo();
-    protected abstract long fetchLAST_NO();
-    protected abstract void incNextNo();
-    protected abstract long fetchMISTAKE_NO();
 
     // Kontonummer erzeugen
     protected void makeNewAccountNo() {

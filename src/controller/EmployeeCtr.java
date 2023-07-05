@@ -13,6 +13,7 @@ public class EmployeeCtr {
         Employee emp3 = lect1;
         Employee emp4 = lect2;
         Employee emp5 = staff1;
+
         // die Objekte haben die selbe Identität
         System.out.println(lect1.toString());
         System.out.println(emp3.toString());
@@ -44,6 +45,15 @@ public class EmployeeCtr {
         System.out.println(staff2.toString());
         System.out.println(emp2.toString());
         System.out.println(emp4.toString());
+
+        emp1.print();
+        emp2.print();
+        emp3.print();
+        emp4.print();
+        emp5.print();
+
+        System.out.println(emp1.getFunction());
+        System.out.println(((Lecturer) emp1).getName());
 
     }
 

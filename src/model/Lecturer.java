@@ -1,6 +1,8 @@
 package model;
 
-public class Lecturer extends Person {
+public class Lecturer extends Person implements Employee {
+    private int persNo;
+    
      public Lecturer() {
 
     }
@@ -25,6 +27,21 @@ public class Lecturer extends Person {
     @Override
     protected void newInput() {
         System.out.println("New lecturer ");
+    }
+
+    @Override
+    public void setPersNo(int persNo) {
+        this.persNo = persNo;
+    }
+
+    @Override
+    public int getPersNo() {
+        return persNo;
+    }
+
+    @Override
+    public String getFunction() {
+        return "lecturer";
     }
 
     
