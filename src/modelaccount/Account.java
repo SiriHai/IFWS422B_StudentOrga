@@ -23,7 +23,23 @@ public abstract class Account {
     private static final String COUNTRY = "1314";
     private static final String CODE_NUMBER = "30050110";
 
-    protected abstract void makeNewAccountNo();
+    protected abstract long fetchNextNo();
+    protected abstract long fetchLAST_NO();
+    protected abstract void incNextNo();
+    protected abstract long fetchMISTAKE_NO();
+
+    // Kontonummer erzeugen
+    protected void makeNewAccountNo() {
+        long nextNo = fetchNextNo();
+        if (nextNo <= fetchLAST_NO()) {
+            accountNo = nextNo;
+            incNextNo();
+        } else {
+            System.out.println("Sparbuch Nummernbereich überschritten");
+            accountNo = fetchMISTAKE_NO();
+        }
+        makeIban();
+    }
     
     private static int calcCheckDigit(long accountNo) {
         String check = String.format("%s%010d%s00", CODE_NUMBER, accountNo, COUNTRY);

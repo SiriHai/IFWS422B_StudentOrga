@@ -10,15 +10,24 @@ public class SavingsAccount extends Account {
 
     private static long nextNo = FIRST_NO;
 
-    // Kontonummer erzeugen
-    protected void makeNewAccountNo() {
-        if (nextNo <= LAST_NO) {
-            super.setAccountNo(nextNo++);
-        } else {
-            System.out.println("Sparbuch Nummernbereich überschritten");
-            super.setAccountNo(MISTAKE_NO);
-        }
-        super.makeIban();
+    @Override
+    protected long fetchNextNo(){
+        return nextNo;
+    }
+    
+    @Override
+    protected long fetchLAST_NO(){
+        return LAST_NO;
+    }
+    
+    @Override
+    protected void incNextNo(){
+        nextNo++;
+    }
+
+    @Override
+    protected long fetchMISTAKE_NO(){
+        return MISTAKE_NO;
     }
 
     // Konstruktoren
