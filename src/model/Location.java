@@ -67,27 +67,28 @@ public class Location {
         loc.city = System.console().readLine(); 
     }
 
-
-    // Überladen
-    public boolean equals(Location loc) {
-        if (this == loc)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
             return true;
-        if (loc == null)
+        if (obj == null)
             return false;
-        
+        if (getClass() != obj.getClass())
+            return false;
+        Location other = (Location) obj;
         if (street == null) {
-            if (loc.street != null)
+            if (other.street != null)
                 return false;
-        } else if (!street.equals(loc.street))
+        } else if (!street.equals(other.street))
             return false;
         if (city == null) {
-            if (loc.city != null)
+            if (other.city != null)
                 return false;
-        } else if (!city.equals(loc.city))
+        } else if (!city.equals(other.city))
             return false;
-        if (no != loc.no)
+        if (no != other.no)
             return false;
-        if (zip != loc.zip)
+        if (zip != other.zip)
             return false;
         return true;
     }
