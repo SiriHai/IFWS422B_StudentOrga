@@ -30,7 +30,7 @@ public abstract class Account implements Numberable {
             accountNo = nextNo;
             incNextNo();
         } else {
-            System.out.println("Sparbuch Nummernbereich überschritten");
+            System.out.println("Nummernbereich überschritten");
             accountNo = fetchMISTAKE_NO();
         }
         makeIban();
