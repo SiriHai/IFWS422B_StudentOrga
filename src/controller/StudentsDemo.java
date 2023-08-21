@@ -1,8 +1,6 @@
 package controller;
 
-import model.Location;
-import model.Student;
-import model.Students;
+import model.*;
 
 public class StudentsDemo {
     public static void main(String[] args) throws Exception {
@@ -18,7 +16,7 @@ public class StudentsDemo {
         System.out.println(student3);
         System.out.println(student4);
         
-        Students students = new Students(100);
+        Things<Student> students = new Things<>(100);
         students.add(student1);
         students.add(student2);
         students.add(student3);
@@ -27,7 +25,7 @@ public class StudentsDemo {
         students.remove(student2);
 
         students.add(new Student("Orlando", "Bloom", 1977));
-        // students.remove("Orlando", "Bloom");
+        students.remove("Orlando", "Bloom");
         students.print();
     }
 

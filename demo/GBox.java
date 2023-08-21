@@ -23,8 +23,8 @@ public class GBox<T> {
         GBox<Integer> gbox2 = new GBox<>(42);
         System.out.println(gbox2.getValue() + 1);
         
-        gbox.setValue1("47");
+        gbox2.setValue1(47);
 
-        System.out.println(gbox.getValue());
+        System.out.println(gbox2.getValue());
     }
 }
